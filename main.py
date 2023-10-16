@@ -1,8 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.actions.wheel_input import ScrollOrigin
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.actions.wheel_input import ScrollOrigin
 import time
 
 
@@ -19,7 +19,7 @@ chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 
 driver=webdriver.Chrome(chrome_options)
 driver.get("https://www.twitch.tv/")
-driver.implicitly_wait(100)
+driver.implicitly_wait(3)
 try:
   search_button= driver.find_element(By.CSS_SELECTOR,'a[href*="/search"]')
 except:
@@ -36,23 +36,16 @@ search_bar.send_keys(game_name)
 search_bar.send_keys(Keys.ENTER)
 driver.find_element(By.CSS_SELECTOR,f'a[href*="/search?term={url_search_game_name}&type=channels"]').click()
 
-mouse_tracker= driver.find_element(By.TAG_NAME,"body")
-scroll_origin=ScrollOrigin.from_element(mouse_tracker)
+
+#true page scrollbar
+body= driver.find_element(By.TAG_NAME, 'body')
+#scrollable div
+div_scroll= driver.find_element(By.CLASS_NAME, 'hrJbhZ ')
 
 
-action=ActionChains(driver)
-action.scroll_from_origin(scroll_origin,0,10)
-action.perform()
+body.send_keys(Keys.ARROW_DOWN)
+driver.execute_script("arguments[0].scroll({top: arguments[0].scrollHeight, behavior: 'smooth'})", div_scroll)
+time.sleep(1)
+driver.execute_script("arguments[0].scroll({top: arguments[0].scrollHeight, behavior: 'smooth'})", div_scroll)
 
-action.reset_actions()
-time.sleep(2)
-while True:
-  action.scroll_from_origin(scroll_origin,0,10)
-  action.perform()
-  action.reset_actions()
-  time.sleep(2)
-    
-
-   
-time.sleep(100)
 
