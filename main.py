@@ -7,20 +7,21 @@ from random import choice
 import time
 
 
-game_name='League of Legends'
+game_name='Starcraft II'
 url_search_game_name=game_name.replace(" ","+")
 
 mobile_emulation = {
-    "deviceMetrics": { "width": 412, "height": 915, "pixelRatio": 3.0 },
-    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile Safari/535.19" }
+  "deviceMetrics": { "width": 412, "height": 915, "pixelRatio": 3.0 },
+  "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile Safari/535.19" }
 
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 
 driver=webdriver.Chrome(chrome_options)
-driver.get("https://www.twitch.tv/")
 driver.implicitly_wait(5)
+driver.set_page_load_timeout(40)
+driver.get("https://www.twitch.tv/")
 
 search_button= driver.find_element(By.CSS_SELECTOR,'a[href*="/search"]')
 search_button.click()
