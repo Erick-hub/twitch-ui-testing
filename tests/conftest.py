@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-
+import sys
 
 game_name="Starcraft II "
 
@@ -21,7 +21,6 @@ def get_driver(request):
     _driver=webdriver.Chrome(chrome_options)
     _driver.implicitly_wait(5)
     _driver.set_page_load_timeout(40)
-    _driver.get("https://www.twitch.tv/")
     request.cls.driver=_driver
-    return request.cls.driver
-    
+    yield request.cls.driver
+    _driver.quit()

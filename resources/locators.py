@@ -12,7 +12,7 @@ class SearchPageLocators():
     search_bar = (By.CSS_SELECTOR,'input[placeholder="Search..."]')
 
 class SearchResultLocators():
-    channel_tab = (By.CSS_SELECTOR,f'a[href*="/search?term={game_name.replace(" ","+")}&type=channels"]')
+    channel_tab = (By.XPATH,"//*[text()='Channels']")
     streamer_list=(By.CLASS_NAME,"ScCoreLink-sc-16kq0mq-0")
     scrollable_div= (By.CLASS_NAME, 'hrJbhZ ')
     window_body=(By.TAG_NAME, 'body')

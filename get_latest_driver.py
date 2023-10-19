@@ -12,7 +12,7 @@ version_number = response.text
 download_url = "https://chromedriver.storage.googleapis.com/" + version_number +"/chromedriver_win32.zip"
 
 # download the zip file using the url built above
-latest_driver_zip = wget.download(download_url,'chromedriver.zip')
+latest_driver_zip = wget.download(download_url,'drivers/chromedriver.zip')
 
 # extract the zip file
 with zipfile.ZipFile(latest_driver_zip, 'r') as zip_ref:
