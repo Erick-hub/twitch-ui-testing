@@ -8,7 +8,7 @@
  - Clone github repository in your local system  `git clone https://github.com/Erick-hub/twitch-ui-testing`
  - Move in twitch-ui-testing repository  `cd twitch-ui-testing`
  - Create new virtual python environment  `python3 -m venv venv`
- - Activate virtual python environment  `source venv/bin/activate`
+ - Activate virtual python environment  `source venv/bin/activate` for linux, `venv\Scripts\activate.bat` for windows
  - Install all the libraries mentioned in [requirements.txt](https://github.com/Erick-hub/twitch-ui-testing/requirements.txt) using  `pip install -r requirements.txt`
  - Run Python file  `python run.py`
  
