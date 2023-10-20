@@ -1,7 +1,8 @@
 from pages.search_page import SearchPage
 from resources.locators import SearchResultLocators
 import time
-game_name="Starcraft II"
+game_name = "Starcraft II"
+
 
 class ResultPage(SearchPage):
     def __init__(self, driver):
